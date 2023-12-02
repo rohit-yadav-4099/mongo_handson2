@@ -2,22 +2,22 @@ const { databaseName } = require("../config/db")
 
 const userCollection = databaseName.collection("userdetail")
 const listAllemployee = async (req, res) => {
-    const result = await userCollection.find({})
+    const result = await userCollection.find({}).toArray()
     return res.send(result)
 }
 
 const listSalary = async (req, res) => {
-    const result = await userCollection.find({salary:{$gt:"30000"}})
+    const result = await userCollection.find({salary:{$gt:"30000"}}).toArray()
     return res.send(result)
 }
 
 const overAllexp = async (req, res) => {
-    const result = await userCollection.find({overallExp:{$gt:"2"}})
+    const result = await userCollection.find({overallExp:{$gt:"2"}}).toArray()
     return res.send(result)
 }
 
 const graduate = async (req, res) => {
-    const result = await userCollection.find({yearGrad:{$gt:"2015"},overallExp:{$gt:"1"}})
+    const result = await userCollection.find({yearGrad:{$gt:"2015"},overallExp:{$gt:"1"}}).toArray()
     return res.send(result)
 }
 
